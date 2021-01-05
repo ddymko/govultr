@@ -30,7 +30,13 @@ jobs:
 
       - name: Run Lint
         run: |
-          golint .
+          golint_files=$(golint .)
+          if [[ -n ${golint_files} ]]; then
+              echo 'fix the filing linting errors:'
+              echo "${golint_files}"
+              exit 1
+          fi
+          exit 0
 
       - name: Run fmt
         run: |
@@ -40,7 +46,6 @@ jobs:
               echo "${gofmt_files}"
               exit 1
           fi
-
           exit 0
 
 
