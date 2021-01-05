@@ -34,6 +34,13 @@ jobs:
 
       - name: Run fmt
         run: |
-          gofmt -s -l .
+          gofmt_files=$(gofmt -l .)
+          if [[ -n ${gofmt_files} ]]; then
+              echo 'gofmt needs running on the following files:'
+              echo "${gofmt_files}"
+              exit 1
+          fi
+
+          exit 0
 
 
