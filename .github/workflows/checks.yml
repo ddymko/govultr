@@ -1,0 +1,39 @@
+name: Checks
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.14.0' # The Go version to download (if necessary) and use.
+
+      - name: Install dependencies
+        run: |
+          go version
+          go get -u golang.org/x/lint/golint
+
+      - name: Run vet
+        run: |
+          go vet .
+
+      - name: Run Lint
+        run: |
+          golint .
+
+      - name: Run fmt
+        run: |
+          gofmt -s -l .
+
+

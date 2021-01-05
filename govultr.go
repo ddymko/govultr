@@ -234,7 +234,8 @@ func (c *Client) vultrErrorHandler(resp *http.Response, err error, numTries int)
 	return nil, fmt.Errorf("gave up after %d attempts, last error: %#v", c.client.RetryMax+1, strings.TrimSpace(string(buf)))
 }
 
+// oolToBoolPtr helper function that returns a pointer from your bool value
 func BoolToBoolPtr(value bool) *bool {
-	b := value
+		b := value
 	return &b
 }
