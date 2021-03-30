@@ -8,7 +8,7 @@ import (
 	"github.com/google/go-querystring/query"
 )
 
-const lbPath = "/v2/load-balancers"
+const lbPath = "/v2/load-balancers2"
 
 // LoadBalancerService is the interface to interact with the server endpoints on the Vultr API
 // Link : https://www.vultr.com/api/#tag/load-balancer
